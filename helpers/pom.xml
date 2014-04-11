@@ -30,7 +30,7 @@
                 <configuration>
                     <instructions>
                         <Export-Package>
-                            com.adviser.hibernate.tryouts.helpers
+                            com.adviser.hibernate.tryouts.helpers.**
                         </Export-Package>
                     </instructions>
                 </configuration>
