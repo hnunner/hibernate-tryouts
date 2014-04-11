@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.adviser.hibernate.tryouts</groupId>
+        <artifactId>hibernate-tryouts-parent</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <artifactId>hibernate-tryouts-hibernate</artifactId>
+    <packaging>bundle</packaging>
+
+    <name>Hibernate Tryouts :: Hibernate</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.adviser.hibernate.tryouts</groupId>
+            <artifactId>hibernate-tryouts-helpers</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.felix</groupId>
+            <artifactId>org.apache.felix.ipojo.annotations</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <configuration>
+                    <instructions>
+                        <Export-Package>
+                            com.adviser.hibernate.tryouts.models
+                        </Export-Package>
+                        <Import-Package>
+                            org.h2,
+                            org.hibernate,
+                            org.hibernate.cfg,
+                            org.hibernate.service,
+                            org.hibernate.proxy,
+                            javassist.util.proxy,
+                            *
+                        </Import-Package>
+                    </instructions>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-ipojo-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
