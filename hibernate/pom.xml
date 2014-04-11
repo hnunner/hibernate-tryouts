@@ -42,7 +42,8 @@
                 <configuration>
                     <instructions>
                         <Export-Package>
-                            com.adviser.hibernate.tryouts.models
+                            com.adviser.hibernate.tryouts.models,
+                            com.adviser.hibernate.tryouts.utils
                         </Export-Package>
                         <Import-Package>
                             org.h2,
