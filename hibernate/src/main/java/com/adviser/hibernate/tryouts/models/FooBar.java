@@ -17,6 +17,13 @@ public class FooBar implements Bar {
 
     /**
      * Constructor.
+     */
+    protected FooBar() {
+        super();
+    }
+
+    /**
+     * Constructor.
      *
      * @param name
      *          FooBar's name
