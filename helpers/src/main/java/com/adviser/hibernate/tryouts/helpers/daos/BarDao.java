@@ -6,14 +6,11 @@ import com.adviser.hibernate.tryouts.helpers.models.Bar;
 
 /**
  * @author Hendrik Nunner
- *
- * @param <B>
- *          the type of Bar
  */
-public interface BarDao<B extends Bar> {
+public interface BarDao {
 
-    public void add(B bar);
+    public void add(Bar bar);
 
-    public List<B> getAll();
+    public List<Bar> getAll();
 
 }

@@ -1,10 +1,3 @@
-//
-//  DatabaseService.java
-//  hibernate-tryouts-hibernate
-//
-//  Created by Hendrik Nunner on 11.04.2014.
-//  Copyright (c) 2014 securizon. All rights reserved.
-//
 package com.adviser.hibernate.tryouts;
 
 import java.util.logging.Logger;
@@ -17,7 +10,6 @@ import org.apache.felix.ipojo.annotations.Validate;
 
 import com.adviser.hibernate.tryouts.helpers.daos.BarDao;
 import com.adviser.hibernate.tryouts.helpers.services.DatabaseService;
-import com.adviser.hibernate.tryouts.models.FooBar;
 
 /**
  * @author Hendrik Nunner
@@ -25,12 +17,12 @@ import com.adviser.hibernate.tryouts.models.FooBar;
 @Component
 @Instantiate
 @Provides
-public class HibernateDatabaseService implements DatabaseService<FooBar> {
+public class HibernateDatabaseService implements DatabaseService {
 
     private static final Logger LOG = Logger.getLogger(HibernateDatabaseService.class.getName());
 
     @Requires
-    private BarDao<FooBar> fooBarDao;
+    private BarDao fooBarDao;
 
     @Validate
     private void start() {
@@ -42,7 +34,7 @@ public class HibernateDatabaseService implements DatabaseService<FooBar> {
      * {@inheritDoc}
      */
     @Override
-    public BarDao<FooBar> getBarDao() {
+    public BarDao getBarDao() {
         return fooBarDao;
     }
 

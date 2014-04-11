@@ -8,16 +8,16 @@ import org.apache.felix.ipojo.annotations.Provides;
 import org.hibernate.Session;
 
 import com.adviser.hibernate.tryouts.helpers.daos.BarDao;
-import com.adviser.hibernate.tryouts.models.FooBar;
+import com.adviser.hibernate.tryouts.helpers.models.Bar;
 import com.adviser.hibernate.tryouts.utils.HibernateUtil;
 
 @Component(immediate=true)
 @Instantiate
 @Provides
-public class FooBarDao implements BarDao<FooBar> {
+public class FooBarDao implements BarDao {
 
     @Override
-    public void add(FooBar fooBar) {
+    public void add(Bar fooBar) {
         Session s = HibernateUtil.getSession();
         s.getTransaction().begin();
         s.persist(fooBar);
@@ -27,10 +27,10 @@ public class FooBarDao implements BarDao<FooBar> {
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<FooBar> getAll() {
+    public List<Bar> getAll() {
         Session s = HibernateUtil.getSession();
         s.getTransaction().begin();
-        List<FooBar> list = s.createQuery("from FooBar").list();
+        List<Bar> list = s.createQuery("from FooBar").list();
         s.getTransaction().commit();
         s.close();
         return list;
