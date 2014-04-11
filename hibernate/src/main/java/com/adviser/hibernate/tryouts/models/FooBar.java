@@ -4,8 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import com.adviser.hibernate.tryouts.helpers.models.Bar;
+
 @Entity
-public class FooBar {
+public class FooBar implements Bar {
+
     @Id
     @GeneratedValue
     private long id;
@@ -27,4 +30,5 @@ public class FooBar {
     public void setName(String name) {
         this.name = name;
     }
+
 }

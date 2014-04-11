@@ -8,7 +8,8 @@ import org.apache.felix.ipojo.annotations.Instantiate;
 import org.apache.felix.ipojo.annotations.Requires;
 import org.apache.felix.ipojo.annotations.Validate;
 
-import com.adviser.hibernate.tryouts.daos.FooBarService;
+import com.adviser.hibernate.tryouts.helpers.daos.BarDao;
+import com.adviser.hibernate.tryouts.helpers.services.DatabaseService;
 import com.adviser.hibernate.tryouts.models.FooBar;
 
 @Component(immediate=true)
@@ -18,7 +19,7 @@ public class Tester {
     private static final Logger LOG = Logger.getLogger(Tester.class.getName());
 
     @Requires
-    private FooBarService fooBarService;
+    private DatabaseService<FooBar> databaseService;
 
     @Validate
     private void start() throws Exception {
@@ -29,18 +30,20 @@ public class Tester {
         LOG.info(getClass().getName() + ":: Starting in 1..");
         Thread.sleep(1000);
 
+        BarDao<FooBar> fooBarDao = databaseService.getBarDao();
+
         // new data point
         FooBar fooBar1 = new FooBar();
         fooBar1.setName("foo");
-        fooBarService.add(fooBar1);
+        fooBarDao.add(fooBar1);
         LOG.info("Successfully added first foo bar");
 
         FooBar fooBar2 = new FooBar();
         fooBar2.setName("bar");
-        fooBarService.add(fooBar2);
+        fooBarDao.add(fooBar2);
         LOG.info("Successfully added second foo bar");
 
-        List<FooBar> allFooBars = fooBarService.getAll();
+        List<FooBar> allFooBars = fooBarDao.getAll();
         for (FooBar fooBar : allFooBars) {
             LOG.info("Found foo bar: " + fooBar.getId() + ", " + fooBar.getName());
         }

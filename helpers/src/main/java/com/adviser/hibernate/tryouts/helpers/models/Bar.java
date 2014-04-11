@@ -1,4 +1,4 @@
-package com.adviser.hibernate.tryouts.helpers;
+package com.adviser.hibernate.tryouts.helpers.models;
 
 /**
  * @author Hendrik Nunner
